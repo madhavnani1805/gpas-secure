@@ -56,26 +56,37 @@ GPAS Secure is a cybersecurity-focused Graphical Password Authentication System 
 ```text
 gpas-secure/
 │
+├── docs/
+│   ├── GPAS_Secure_FinalReview.pptx
+│   └── OUTPUT SCREENSHOTS.docx
+│
 ├── public/
 │   ├── css/
+│   │   └── style.css
+│   │
 │   ├── js/
+│   │   ├── admin.js
+│   │   ├── dashboard.js
+│   │   ├── forgot.js
+│   │   ├── login.js
+│   │   ├── register.js
+│   │   └── reset.js
+│   │
 │   ├── admin.html
 │   ├── dashboard.html
 │   ├── forgot.html
+│   ├── index.html
 │   ├── login.html
 │   ├── register.html
 │   └── reset.html
 │
-├── docs/
-│   ├── GPAS-Secure-Presentation.pptx
-│   └── OUTPUT SCREENSHOTS.docx
-│
 ├── .env.example
 ├── .gitignore
+├── .hintrc
 ├── package.json
 ├── package-lock.json
-├── server.js
-└── README.md
+├── README.md
+└── server.js
 ```
 
 ---
@@ -134,24 +145,28 @@ http://localhost:3001
 
 ---
 
-## 📊 Project Demonstration
+📊 Project Demonstration
 
-Project outputs, screenshots, and presentation materials are available in:
+Detailed project outputs, screenshots, workflow diagrams, and presentation materials are available in:
 
-```text
 docs/
-├── OUTPUT SCREENSHOTS.docx
-└── GPAS-Secure-Presentation.pptx
-```
+├── GPAS_Secure_FinalReview.pptx
+└── OUTPUT SCREENSHOTS.docx
 
-These documents contain:
-- Registration Process
-- Login Workflow
-- Graphical Password Setup
-- Dashboard Screenshots
-- Admin Panel Screenshots
-- Analytics Dashboard
-- Security Monitoring Features
+These documents showcase:
+
+User Registration Workflow
+Graphical Password Setup
+Secure Login Process
+Password Reset Mechanism
+User Dashboard
+File Vault Operations
+Admin Dashboard
+User Management
+Audit Logs
+Security Monitoring
+Analytics Dashboard
+System Outputs & Results
 
 ---
 
