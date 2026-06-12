@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GPAS Secure</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Particles -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+
+  <style>
+    /* animated gradient */
+    body{
+      background: linear-gradient(-45deg,#4f46e5,#7c3aed,#9333ea,#6366f1);
+      background-size:400% 400%;
+      animation: gradientMove 12s ease infinite;
+       transition: background 0.5s ease;
+    }
+    @keyframes gradientMove{
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+    }
+
+    /* ⭐⭐ ADD THIS ⭐⭐ */
+  .dark-mode{
+    background:#0f172a !important;
+  }
+
+  .btn-glow:hover{
+    box-shadow:0 0 20px #22d3ee;
+  }
+  
+    /* glow effect */
+    .btn-glow:hover{
+      box-shadow:0 0 20px #22d3ee;
+    }
+  </style>
+</head>
+
+<body id="body" class="text-white overflow-x-hidden">
+
+<!-- PARTICLES BG -->
+<div id="particles" class="fixed inset-0 -z-10"></div>
+
+
+<!-- ================= NAVBAR ================= -->
+<nav class="fixed w-full top-0 z-50 bg-white/10 backdrop-blur-xl border-b border-white/20">
+
+  <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
+
+    <h1 class="text-xl font-bold flex items-center gap-2">
+      🔐 GPAS Secure
+    </h1>
+
+    <div class="flex items-center gap-4">
+
+      <button onclick="toggleTheme()" class="text-sm opacity-80">🌙 Theme</button>
+
+      <a href="login.html"
+         class="px-5 py-2 rounded-lg border border-cyan-300 hover:bg-cyan-400 hover:text-black transition btn-glow">
+        Login
+      </a>
+
+      <a href="register.html"
+         class="px-5 py-2 rounded-lg border border-pink-300 hover:bg-pink-400 hover:text-black transition btn-glow">
+        Register
+      </a>
+
+    </div>
+  </div>
+</nav>
+
+
+<!-- ================= HERO ================= -->
+<section class="h-screen flex flex-col justify-center items-center text-center px-6">
+
+  <!-- typing text -->
+  <h2 class="text-5xl font-bold mb-6">
+    <span id="typing"></span>
+  </h2>
+
+  <p class="opacity-90 mb-8 text-lg">
+    Secure • Modern • Multi-layer Protection
+  </p>
+
+  <a href="login.html"
+     class="px-8 py-3 bg-cyan-500 rounded-xl hover:scale-110 transition shadow-xl">
+    Get Started
+  </a>
+
+</section>
+
+
+<!-- ================= STATS ================= -->
+<section class="py-20 bg-white/10 backdrop-blur-lg">
+
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-6 text-center">
+
+    <div class="p-6 rounded-xl bg-white/10">
+      <i data-lucide="shield-check"></i>
+      <h3 class="text-2xl font-bold mt-2">100% Secure</h3>
+      <p class="opacity-70">Graphical password protection</p>
+    </div>
+
+    <div class="p-6 rounded-xl bg-white/10">
+      <i data-lucide="zap"></i>
+      <h3 class="text-2xl font-bold mt-2">Fast Login</h3>
+      <p class="opacity-70">Quick authentication</p>
+    </div>
+
+    <div class="p-6 rounded-xl bg-white/10">
+      <i data-lucide="layers"></i>
+      <h3 class="text-2xl font-bold mt-2">Multi-Layer</h3>
+      <p class="opacity-70">CAPTCHA + OTP + Lockout</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+<footer class="text-center py-6 bg-black/30 backdrop-blur-lg">
+  <p class="text-sm opacity-70">
+    © 2026 GPAS 
+  </p>
+</footer>
+
+
+
+<!-- ================= SCRIPTS ================= -->
+
+<script>
+/* ===== Typing animation ===== */
+const text="Graphical Password Authentication";
+let i=0;
+
+function type(){
+  if(i<text.length){
+    document.getElementById("typing").innerHTML+=text.charAt(i);
+    i++;
+    setTimeout(type,40);
+  }
+}
+type();
+
+
+/* ===== Dark/Light toggle ===== */
+function toggleTheme(){
+  document.body.classList.toggle("dark-mode");
+}
+
+
+
+/* ===== Icons ===== */
+lucide.createIcons();
+
+
+/* ===== Particles ===== */
+tsParticles.load("particles",{
+  particles:{
+    number:{value:60},
+    size:{value:2},
+    move:{speed:1},
+    opacity:{value:0.5},
+    links:{enable:true}
+  }
+});
+</script>
+
+</body>
+</html>

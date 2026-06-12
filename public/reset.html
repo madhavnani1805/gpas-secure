@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reset Password</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-900 text-white flex items-center justify-center h-screen">
+
+<div class="bg-white/10 p-8 rounded-xl w-96 text-center">
+
+  <h2 class="text-xl mb-4">Reset Graphical Password</h2>
+
+  <p class="text-sm mb-2">Click 4 new points on your image</p>
+
+  <!-- IMAGE -->
+  <div id="imgBox" class="relative w-64 mx-auto mb-4 overflow-hidden rounded-xl">
+    <div id="imageWrapper" class="relative w-full">
+      <img id="resetImage"
+           class="rounded-xl cursor-crosshair w-full object-contain block">
+    </div>
+  </div>
+
+  <p id="previewText"
+    class="text-green-400 text-xs text-center hidden mt-1">
+    New Image Preview 👁️
+  </p>
+
+  <!-- buttons -->
+  <div class="flex gap-3 justify-center mb-4">
+    <button onclick="undoPoint()"
+      class="px-4 py-1 bg-yellow-500 rounded">Undo</button>
+
+    <button onclick="clearPoints()"
+      class="px-4 py-1 bg-red-500 rounded">Clear</button>
+  </div>
+
+  <!-- save -->
+  <button onclick="saveNewPassword()"
+    class="w-full bg-green-500 py-2 rounded">
+    Save New Password
+  </button>
+
+  <!-- image upload section -->
+  <div class="mt-6 pt-6 border-t border-white/20">
+    <p class="text-sm mb-3 text-yellow-300">Or Update Image + Password:</p>
+    
+    <input type="file" id="newImage" accept="image/*"
+      class="mt-3 text-white text-sm w-full">
+    
+    <button onclick="updateImageAndPassword()"
+      class="w-full mt-3 bg-blue-500 py-2 rounded-lg hover:bg-blue-600">
+      Set New Image + Password
+    </button>C
+  </div>
+
+</div>
+
+<script src="js/reset.js"></script>
+
+</body>
+</html>

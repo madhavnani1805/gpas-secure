@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Particles -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+
+  <style>
+    /* ===== animated gradient (same as index) ===== */
+    body{
+      
+      background: linear-gradient(-45deg,#4f46e5,#7c3aed,#9333ea,#6366f1);
+      background-size:400% 400%;
+      animation: gradientMove 12s ease infinite;
+      transition: background 0.5s ease;
+    }
+
+    @keyframes gradientMove{
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+    }
+
+    /* dark mode */
+    .dark-mode{
+      background:#0f172a !important;
+    }
+
+    /* fade animation */
+    .fade-in{
+      animation: fade 0.6s ease;
+    }
+
+    @keyframes fade{
+      from{opacity:0; transform:translateY(20px)}
+      to{opacity:1; transform:translateY(0)}
+    }
+
+    /* glow button */
+    .btn-glow:hover{
+      box-shadow:0 0 20px #22d3ee;
+    }
+
+    /* Card relative positioning */
+.fade-in{
+  position: relative;
+}
+
+/* Glow when locked */
+.locked-glow{
+  box-shadow: 0 0 40px rgba(239,68,68,0.6);
+  transition: 0.3s ease;
+}
+
+/* Shake animation */
+@keyframes shake{
+  0%{transform:translateX(0)}
+  25%{transform:translateX(-6px)}
+  50%{transform:translateX(6px)}
+  75%{transform:translateX(-6px)}
+  100%{transform:translateX(0)}
+}
+
+.shake{
+  animation: shake 0.4s ease;
+}
+
+/* Locked glow */
+.locked-glow{
+  box-shadow:0 0 30px #ef4444;
+}
+  </style>
+</head>
+
+
+<body id="body" class="text-white flex items-center justify-center h-screen overflow-hidden">
+
+  <!-- LOCK OVERLAY -->
+<div id="lockOverlay"
+     class="fixed inset-0 bg-black/40 backdrop-blur-md hidden z-40 flex items-center justify-center">
+
+  <div id="lockContainer" class="relative">
+
+    <!-- SVG Timer -->
+    <svg width="140" height="140">
+      <circle cx="70" cy="70" r="60"
+              stroke="#ffffff30"
+              stroke-width="8"
+              fill="none"/>
+      
+      <circle id="progressCircle"
+              cx="70" cy="70" r="60"
+              stroke="#ef4444"
+              stroke-width="8"
+              fill="none"
+              stroke-linecap="round"
+              transform="rotate(-90 70 70)"
+              stroke-dasharray="377"
+              stroke-dashoffset="0"/>
+    </svg>
+
+    <!-- Lock icon + timer text -->
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-white">
+      <div class="text-2xl">🔒</div>
+      <div id="lockTimerText" class="text-lg font-bold mt-1">5:00</div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- particles -->
+<div id="particles" class="fixed inset-0 -z-10"></div>
+
+
+<!-- ================= LOGIN CARD ================= -->
+<div class="relative bg-white/15 backdrop-blur-xl p-8 rounded-2xl shadow-2xl w-96 fade-in">
+
+  <!-- header -->
+  <div class="flex justify-between items-center mb-5">
+    <h2 class="text-xl font-bold flex items-center gap-2">
+      🔐 Login
+    </h2>
+
+    <button onclick="toggleTheme()" class="text-sm opacity-80 hover:opacity-100">
+      🌙 Theme
+    </button>
+  </div>
+
+
+
+  <!-- username -->
+  <input id="username"
+  class="w-full p-2 mb-3 rounded bg-gray-700 text-white caret-white placeholder-white focus:outline-none focus:ring-2 focus:ring-cyan-400"
+  placeholder="Username">
+
+
+  <!-- captcha -->
+  <p id="captchaQ" class="text-sm mb-1 font-semibold"></p>
+
+  <input id="captchaInput"
+  class="w-full p-2 mb-3 rounded bg-gray-700 text-white caret-white placeholder-white focus:outline-none focus:ring-2 focus:ring-cyan-400"
+  placeholder="Captcha">
+
+  <p id="attemptDisplay" class="text-sm text-yellow-300 mb-2"></p>
+
+
+<!-- user image -->
+  <div class="flex justify-center mb-4">
+
+  <div id="imgBox" class="relative hidden">
+
+    <p id="imageLoader" class="text-center text-sm mb-2 hidden">
+  ⏳ Loading image...
+</p>
+
+    <div id="imageWrapper" class="relative inline-block w-full">
+      <img id="loginImage"
+           class="rounded-xl shadow-lg cursor-crosshair max-h-80 block w-full object-contain">
+    </div>
+  </div>
+</div>
+
+<!-- ✅ ADD HERE (exactly here) -->
+<div class="flex gap-3 justify-center mb-4">
+  <button type="button" onclick="undoLoginPoint()"
+    class="px-4 py-1 rounded bg-yellow-500 hover:scale-105 transition">
+    Undo
+  </button>
+
+  <button type="button" onclick="clearLoginPoints()"
+    class="px-4 py-1 rounded bg-red-500 hover:scale-105 transition">
+    Clear
+  </button>
+</div>
+
+
+<!-- login button -->
+<button onclick="login()"
+  class="w-full bg-cyan-500 py-2 rounded-lg hover:scale-105 transition btn-glow">
+  Login
+</button>
+
+<p class="text-center mt-3 text-sm">
+  <a href="forgot.html" class="text-cyan-300 hover:underline">
+    Forgot Graphical Password?
+  </a>
+</p>
+
+<!-- 🔒 Lock timer BELOW button -->
+
+<!-- Premium Floating Lock Timer Overlay -->
+<div id="lockContainer"
+     class="absolute inset-0 flex items-center justify-center hidden bg-black/40 rounded-2xl">
+
+  <div class="relative w-28 h-28 backdrop-blur-xl bg-white/10 rounded-full shadow-2xl">
+
+    <svg class="w-28 h-28 rotate-[-90deg]">
+      <circle cx="56" cy="56" r="48"
+              stroke="rgba(255,255,255,0.2)"
+              stroke-width="8"
+              fill="none"/>
+
+      <circle id="progressCircle"
+              cx="56" cy="56" r="48"
+              stroke="#ef4444"
+              stroke-width="8"
+              fill="none"
+              stroke-dasharray="302"
+              stroke-dashoffset="0"
+              stroke-linecap="round"/>
+    </svg>
+
+    <div id="lockTimerText"
+         class="absolute inset-0 flex items-center justify-center
+                text-red-400 font-bold text-lg">
+      5:00
+    </div>
+
+  </div>
+</div>
+
+  <!-- loader -->
+  <div id="loader" class="hidden text-center mt-4 animate-pulse">
+    ⏳ Checking...
+  </div>
+
+</div>
+
+
+<!-- toast -->
+<div id="toast"
+class="hidden fixed bottom-6 right-6 bg-black/80 text-white px-4 py-2 rounded shadow-lg backdrop-blur">
+</div>
+
+
+
+<!-- ================= SCRIPTS ================= -->
+<script src="js/login.js"></script>
+
+<script>
+/* dark mode */
+function toggleTheme(){
+  document.body.classList.toggle("dark-mode");
+}
+
+/* particles */
+tsParticles.load("particles",{
+  particles:{
+    number:{value:50},
+    size:{value:2},
+    move:{speed:1},
+    opacity:{value:0.4},
+    links:{enable:true}
+  }
+});
+</script>
+
+<audio id="lockSound">
+  <source src="https://assets.mixkit.co/sfx/preview/mixkit-alarm-digital-clock-beep-989.mp3">
+</audio>
+
+</body>
+</html>

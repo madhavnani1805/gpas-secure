@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GPAS Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body{
+      background: radial-gradient(circle at top,#1e1b4b,#020617);
+      color: white;
+      font-family: 'Segoe UI';
+    }
+
+    .glass{
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .neon{
+      box-shadow: 0 0 20px #22d3ee, 0 0 40px #22d3ee;
+    }
+
+    .neon-text{
+      text-shadow: 0 0 10px #22d3ee;
+    }
+
+    .card{
+      transition: 0.3s;
+    }
+
+    .card:hover{
+      transform: scale(1.03);
+      box-shadow: 0 0 25px rgba(34,211,238,0.5);
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex items-center justify-center">
+
+<div class="glass p-8 rounded-3xl w-[420px] space-y-5">
+
+  <!-- TITLE -->
+  <h1 class="text-center text-sm tracking-widest text-cyan-400 neon-text">
+    GPAS SECURITY CORE
+  </h1>
+
+  <!-- ALERT BOX -->
+  <div id="alertBox"
+    class="hidden bg-red-500/20 text-red-400 p-3 rounded-xl text-center text-sm">
+  </div>
+
+  <!-- PROFILE -->
+  <div class="text-center space-y-2">
+    <img id="profileImage"
+      class="w-28 h-28 mx-auto rounded-full object-cover object-[center_20%] border-4 border-cyan-400 neon hidden">
+
+    <p id="userDisplay" class="text-xl font-bold neon-text"></p>
+    <p id="userEmail" class="text-xs text-white/60"></p>
+  </div>
+
+  <!-- STATUS -->
+  <div class="glass p-3 rounded-xl card">
+    <p class="text-green-400 font-semibold">🟢 System Secure</p>
+    <p class="text-xs">Authentication: GPAS</p>
+    <p id="sessionInfo" class="text-xs"></p>
+  </div>
+
+  <!-- SECURITY SCORE -->
+  <div class="glass p-3 rounded-xl card">
+    <p class="text-yellow-300 font-semibold">⚡ Security Score</p>
+    <p id="score" class="text-lg font-bold"></p>
+  </div>
+
+  <!-- ACTIVITY -->
+  <div class="glass p-3 rounded-xl card">
+    <p class="font-semibold">📊 Activity</p>
+    <p id="lastLogin" class="text-xs"></p>
+    <p id="attemptInfo" class="text-xs"></p>
+  </div>
+
+  <!-- CHART -->
+<div class="glass p-4 rounded-xl">
+  <p class="text-cyan-300 font-semibold">📊 Security Analytics</p>
+  <canvas id="attemptChart" class="w-full h-44"></canvas>
+</div>
+
+  <!-- TIMELINE -->
+  <div class="glass p-3 rounded-xl card">
+    <p class="font-semibold">🧠 Activity Timeline</p>
+    <ul id="timeline" class="text-xs space-y-1"></ul>
+  </div>
+
+<!-- FILE SYSTEM -->
+<div class="glass p-4 rounded-xl space-y-4">
+
+  <p class="text-yellow-300 font-semibold">📁 Secure Storage</p>
+
+  <!-- DRAG DROP -->
+  <div id="dropZone"
+    class="border-2 border-dashed border-cyan-400 p-4 text-center rounded-lg cursor-pointer hover:bg-white/10 transition">
+    Drag & Drop File or Click
+    <input type="file" id="fileInput" class="hidden">
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="w-full bg-white/10 rounded h-2 overflow-hidden">
+    <div id="progressBar" class="h-2 bg-cyan-400 w-0"></div>
+  </div>
+
+  <!-- STORAGE -->
+  <p class="text-xs text-white/60">
+    Storage Used: <span id="storage">0%</span>
+  </p>
+
+  <!-- FILE LIST -->
+  <div id="fileList" class="space-y-2 max-h-40 overflow-auto"></div>
+
+</div>
+
+  <!-- TIMER -->
+  <div class="text-center">
+    <p class="text-xs text-white/50">Session Countdown</p>
+    <p id="timer" class="text-xl text-cyan-300 neon-text"></p>
+  </div>
+
+  <div id="adminButton" class="hidden text-center">
+    <a href="admin.html"
+      class="inline-block mb-3 bg-violet-500 px-4 py-2 rounded text-xs hover:bg-violet-400 transition">
+      Admin Panel
+    </a>
+  </div>
+
+  <!-- LOGOUT -->
+  <button onclick="logout()"
+    class="w-full py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 font-bold neon hover:scale-105 transition">
+    Logout
+  </button>
+
+</div>
+
+<!-- FILE PREVIEW MODAL -->
+<div id="previewModal"
+  class="fixed inset-0 bg-black/70 hidden flex items-center justify-center">
+
+  <div class="bg-white/10 backdrop-blur-lg p-4 rounded-xl">
+    <button onclick="closePreview()" class="mb-2 text-red-400">Close</button>
+    <img id="previewImg" class="max-h-80 hidden">
+
+    <object id="previewPdf"
+        type="application/pdf"
+        class="w-96 h-80 hidden">
+</object>
+
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/dashboard.js"></script>
+
+</body>
+</html>
