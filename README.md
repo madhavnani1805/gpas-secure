@@ -64,6 +64,11 @@ node server.js
 
 ## Author
 
-Madhav Manugula
-B.Tech CSE
+**Madhav Manugula**
+
+B.Tech Computer Science & Engineering  
 AVN Institute of Engineering & Technology
+
+### Project Information
+This project was developed as part of a college mini project.
+Primary development, backend implementation, security features, admin dashboard, analytics, and integration were completed by Madhav Manugula.
