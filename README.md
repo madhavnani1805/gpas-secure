@@ -1,74 +1,179 @@
-# GPAS Secure
+# 🔐 GPAS Secure
 
-GPAS Secure is a multi-layer Graphical Password Authentication System developed as a cybersecurity-focused mini project.
+GPAS Secure is a cybersecurity-focused Graphical Password Authentication System (GPAS) developed as a B.Tech mini project. The system enhances traditional authentication by using image-based graphical passwords, secure file storage, audit logging, user management, and administrative monitoring features.
 
-## Features
+---
 
-* Graphical Password Authentication
-* Image-Based Login
-* Password Reset via Image Verification
-* Secure File Vault
-* File Upload & Deletion
-* Admin Dashboard
-* User Management
-* Audit Logs
-* Suspicious Activity Detection
-* Analytics Dashboard
-* Automatic File Cleanup
+## 🚀 Features
 
-## Technologies Used
+### Authentication & Security
+- Graphical Password Authentication
+- Image-Based User Login
+- Password Reset via Image Verification
+- CAPTCHA Verification
+- Account Lock Protection for Invalid Attempts
+- Suspicious Activity Detection
+- Session Monitoring & Security Controls
 
-* HTML5
-* CSS3
-* JavaScript
-* Node.js
-* Express.js
-* MySQL
-* Multer
+### File Vault
+- Secure File Upload
+- File Download & Access
+- File Deletion Management
+- Automatic Cleanup of Unused Files
 
-## Project Structure
+### Administration
+- Admin Dashboard
+- User Management
+- Role-Based Access Control
+- Audit Logging
+- Activity Monitoring
+
+### Analytics
+- User Statistics
+- File Usage Analytics
+- Security Event Monitoring
+- Dashboard Insights & Reports
+
+---
+
+## 🛠️ Technologies Used
+
+| Technology | Purpose |
+|------------|----------|
+| HTML5 | Frontend Structure |
+| CSS3 | User Interface Design |
+| JavaScript | Client-Side Functionality |
+| Node.js | Backend Runtime |
+| Express.js | Web Framework |
+| MySQL | Database Management |
+| Multer | File Upload Handling |
+| dotenv | Environment Variable Management |
+
+---
+
+## 📂 Project Structure
 
 ```text
-public/
-server.js
-package.json
-uploads/
+gpas-secure/
+│
+├── public/
+│   ├── css/
+│   ├── js/
+│   ├── admin.html
+│   ├── dashboard.html
+│   ├── forgot.html
+│   ├── login.html
+│   ├── register.html
+│   └── reset.html
+│
+├── docs/
+│   ├── GPAS-Secure-Presentation.pptx
+│   └── OUTPUT SCREENSHOTS.docx
+│
+├── .env.example
+├── .gitignore
+├── package.json
+├── package-lock.json
+├── server.js
+└── README.md
 ```
 
-## Installation
+---
 
-1. Clone the repository
-2. Install dependencies
+## ⚙️ Installation
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/madhavnani1805/gpas-secure.git
+cd gpas-secure
+```
+
+### 2. Install Dependencies
 
 ```bash
 npm install
 ```
 
-3. Configure environment variables
+### 3. Configure Environment Variables
 
-Create a `.env` file using `.env.example`
+Create a `.env` file in the root directory using `.env.example` as a reference:
 
-4. Start the server
+```env
+DB_HOST=localhost
+DB_USER=your_username
+DB_PASSWORD=your_password
+DB_NAME=gpas
+PORT=3001
+```
+
+### 4. Start the Application
 
 ```bash
 node server.js
 ```
 
-## Security Features
+The application will be available at:
 
-* Graphical Password Authentication
-* Audit Logging
-* Admin Controls
-* Suspicious Activity Monitoring
-* Secure File Handling
+```text
+http://localhost:3001
+```
 
-## Author
+---
+
+## 🔒 Security Features
+
+- Graphical Password Authentication
+- CAPTCHA Verification
+- Audit Logging
+- Role-Based Access Control
+- Account Lock Mechanism
+- Suspicious Activity Detection
+- Secure File Management
+- Session Monitoring
+
+---
+
+## 📊 Project Demonstration
+
+Project outputs, screenshots, and presentation materials are available in:
+
+```text
+docs/
+├── OUTPUT SCREENSHOTS.docx
+└── GPAS-Secure-Presentation.pptx
+```
+
+These documents contain:
+- Registration Process
+- Login Workflow
+- Graphical Password Setup
+- Dashboard Screenshots
+- Admin Panel Screenshots
+- Analytics Dashboard
+- Security Monitoring Features
+
+---
+
+## 👨‍💻 Author
 
 **Madhav Manugula**
 
-B.Tech Computer Science & Engineering  
+B.Tech – Computer Science & Engineering  
 AVN Institute of Engineering & Technology
 
-### Project Information
+### Project Contribution
+
 This project was developed as part of a college mini project.
-Primary development, backend implementation, security features, admin dashboard, analytics, and integration were completed by Madhav Manugula.
+
+Primary development, backend implementation, security features, file vault integration, admin dashboard, analytics module, audit logging, and overall system integration were completed by **Madhav Manugula**.
+
+---
+
+## 📜 License
+
+This project is intended for educational and academic purposes.
+
+---
+
+⭐ If you found this project useful, consider giving the repository a star.
